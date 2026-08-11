@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedPulse Synergy | Universal Med School & Residency Matching Hub</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN for medical & app icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Ambient Backdrop Gradients -->
+    <div class="ambient-glow glow-emerald"></div>
+    <div class="ambient-glow glow-cyan"></div>
+    <div class="ambient-glow glow-purple"></div>
+
+    <div id="app" class="app-container">
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="nav-brand">
+                <div class="brand-logo">
+                    <i class="fa-solid fa-heart-pulse logo-icon"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>MedPulse <span class="badge-synergy">SYNERGY</span></h1>
+                    <p class="brand-tagline">Mayo Clinic Match & Med School Master System</p>
+                </div>
+            </div>
+
+            <!-- Profile & Quick Settings Dropdowns (0% Typing) -->
+            <div class="navbar-controls">
+                <div class="dropdown-control-group">
+                    <label><i class="fa-solid fa-user-gear"></i> Student Persona</label>
+                    <select id="personaSelect" class="styled-select highlight-select">
+                        <option value="kerala_uae_usmle" selected>🌴 Keralite in UAE (USMLE Mayo Clinic Track)</option>
+                        <option value="uae_emree">🇦🇪 UAE Resident (EMREE / DHA / MOH Track)</option>
+                        <option value="india_inicet">🇮🇳 India Med Student (INI-CET / NExT Track)</option>
+                        <option value="uk_ukmla">🇬🇧 UK Residency Aspirant (UKMLA / NHS Track)</option>
+                        <option value="night_owl_reset">🦉 Extreme Night Owl 7-Day Reset Protocol</option>
+                    </select>
+                </div>
+
+                <div class="dropdown-control-group">
+                    <label><i class="fa-solid fa-graduation-cap"></i> Current Stage</label>
+                    <select id="stageSelect" class="styled-select">
+                        <option value="ms1">Med School - Year 1 (Pre-Clinical Foundation)</option>
+                        <option value="ms2">Med School - Year 2 (Organ Systems & Pathology)</option>
+                        <option value="ms3">Med School - Year 3 (Clinical Rotations)</option>
+                        <option value="ms4" selected>Med School - Year 4 (Sub-I, Step 2 & Match Prep)</option>
+                        <option value="intern">Internship / House Surgery</option>
+                    </select>
+                </div>
+
+                <!-- Strict Mode Trigger Button -->
+                <button id="strictLockdownBtn" class="strict-lockdown-btn">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>STRICT LOCKDOWN</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Quick Stats Bar -->
+        <div class="quick-stats-bar">
+            <div class="stat-card">
+                <div class="stat-icon icon-emerald"><i class="fa-solid fa-fire"></i></div>
+                <div class="stat-data">
+                    <span class="stat-value" id="statStreak">14 Days</span>
+                    <span class="stat-label">Anki & Study Streak</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon icon-cyan"><i class="fa-solid fa-brain"></i></div>
+                <div class="stat-data">
+                    <span class="stat-value" id="statCardsDue">48 Cards</span>
+                    <span class="stat-label">AuraFlash Due Today</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon icon-gold"><i class="fa-solid fa-kaaba"></i></div>
+                <div class="stat-data">
+                    <span class="stat-value" id="statNextPrayer">Asr in 1h 42m</span>
+                    <span class="stat-label">Next Prayer (Dubai GMT+4)</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon icon-purple"><i class="fa-solid fa-hospital-user"></i></div>
+                <div class="stat-data">
+                    <span class="stat-value" id="statMayoMatch">92%</span>
+                    <span class="stat-label">Mayo Clinic Match Readiness</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon icon-pink"><i class="fa-solid fa-moon"></i></div>
+                <div class="stat-data">
+                    <span class="stat-value" id="statSleepStatus">Day 4 of 7</span>
+                    <span class="stat-label">Night Owl Reset Shift</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Tabs -->
+        <nav class="main-tabs">
+            <button class="tab-btn active" data-tab="tab-routine">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Strict Routine & Owl Reset</span>
+            </button>
+            <button class="tab-btn" data-tab="tab-anki">
+                <i class="fa-solid fa-bolt"></i>
+                <span>AuraFlash (Auto Anki AI)</span>
+            </button>
+            <button class="tab-btn" data-tab="tab-islamic">
+                <i class="fa-solid fa-mosque"></i>
+                <span>Prayer & Quran Routine</span>
+            </button>
+            <button class="tab-btn" data-tab="tab-residency">
+                <i class="fa-solid fa-stethoscope"></i>
+                <span>Residency Match Roadmap</span>
+            </button>
+            <button class="tab-btn" data-tab="tab-lifestyle">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Kerala/UAE Diets & Workouts</span>
+            </button>
+            <button class="tab-btn" data-tab="tab-research">
+                <i class="fa-solid fa-microscope"></i>
+                <span>Research & PubMed Tracker</span>
+            </button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="tab-content-area">
+            
+            <!-- TAB 1: STRICT ROUTINE & OWL RESET -->
+            <section id="tab-routine" class="tab-pane active">
+                <div class="pane-grid-2col">
+                    <!-- Left Column: Dynamic Daily Schedule & Pre/Post Lecture Engine -->
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <h2><i class="fa-solid fa-calendar-check icon-accent"></i> Master Daily High-Yield Schedule</h2>
+                            <div class="panel-actions">
+                                <select id="scheduleModeDropdown" class="styled-select-sm">
+                                    <option value="routine_uae_kerala">🌴 UAE/Kerala Modern Med Student Routine</option>
+                                    <option value="routine_usmle_grind">🔥 USMLE Mayo Clinic 12-Hour Grind</option>
+                                    <option value="routine_owl_night">🦉 Night Owl Phase 1 Routine (1am - 9am)</option>
+                                    <option value="routine_exam_week">⚡ Pre-Exam High-Yield Cram Routine</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Schedule Timeline list -->
+                        <div id="scheduleListContainer" class="schedule-timeline">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Pre/Post Lecture 3-Step Timer & 7-Day Owl Transformer -->
+                    <div class="dashboard-panel-stack">
+                        <!-- Pre/Post Lecture Workflow Timer -->
+                        <div class="dashboard-panel">
+                            <div class="panel-header">
+                                <h3><i class="fa-solid fa-book-bookmark icon-cyan"></i> Pre & Post-Lecture Study System</h3>
+                            </div>
+                            <div class="lecture-selector-group">
+                                <label><i class="fa-solid fa-list-check"></i> Select Current Lecture Module:</label>
+                                <select id="lectureSubjectSelect" class="styled-select">
+                                    <option value="cardio_path">Cardiovascular Pathology (Heart Failure & Murmurs)</option>
+                                    <option value="neuro_anat">Neuroanatomy (Cranial Nerves & Brainstem Tracts)</option>
+                                    <option value="pharm_micro">Microbiology & Antimicrobial Pharmacology</option>
+                                    <option value="renal_phys">Renal Physiology & Electrolyte Disorders</option>
+                                    <option value="endo_diabetes">Endocrinology (Diabetes, Thyroid & Adrenal)</option>
+                                </select>
+                            </div>
+
+                            <div class="study-phase-stepper">
+                                <div class="phase-step active" data-phase="pre">
+                                    <span class="step-num">1</span>
+                                    <div class="step-details">
+                                        <strong>Pre-Lecture (15 min)</strong>
+                                        <p>Skim Objectives & Auto-Generate Preview Cards</p>
+                                    </div>
+                                </div>
+                                <div class="phase-step" data-phase="during">
+                                    <span class="step-num">2</span>
+                                    <div class="step-details">
+                                        <strong>Lecture Active Recall</strong>
+                                        <p>Flag High-Yield Concepts via 1-Click Chips</p>
+                                    </div>
+                                </div>
+                                <div class="phase-step" data-phase="post">
+                                    <span class="step-num">3</span>
+                                    <div class="step-details">
+                                        <strong>Post-Lecture Lock (30 min)</strong>
+                                        <p>Convert Flags to AuraFlash Cards & Review FSRS</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Integrated Timer Widget -->
+                            <div class="timer-widget">
+                                <div class="timer-display" id="studyTimerDisplay">15:00</div>
+                                <div class="timer-controls">
+                                    <button id="startTimerBtn" class="btn-primary"><i class="fa-solid fa-play"></i> Start Phase</button>
+                                    <button id="pauseTimerBtn" class="btn-secondary"><i class="fa-solid fa-pause"></i> Pause</button>
+                                    <button id="resetTimerBtn" class="btn-ghost"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 7-Day Night Owl Shift Progress Tracker -->
+                        <div class="dashboard-panel">
+                            <div class="panel-header">
+                                <h3><i class="fa-solid fa-wand-magic-sparkles icon-gold"></i> 7-Day Night Owl to Early Riser Reset</h3>
+                            </div>
+                            <p class="panel-desc">Shift your sleep cycle painlessly by 45 minutes each day without fatigue.</p>
+                            
+                            <div class="day-progress-grid" id="owlResetDaysGrid">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: AURAFLASH AUTOMATED ANKI -->
+            <section id="tab-anki" class="tab-pane">
+                <div class="anki-wrapper">
+                    <!-- Left Sidebar: Automatic Card Generator & Deck Chooser -->
+                    <div class="anki-sidebar glass-card">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-wand-magic-sparkles icon-cyan"></i> Auto Card Generator</h3>
+                        </div>
+                        <p class="panel-desc">Zero typing required! Select your textbook/exam source and auto-pull high-yield cards.</p>
+
+                        <div class="anki-generator-controls">
+                            <div class="dropdown-control-group">
+                                <label>Target Exam / Curriculum Deck:</label>
+                                <select id="ankiDeckSourceSelect" class="styled-select">
+                                    <option value="usmle_step1_fa">🔥 USMLE Step 1 - First Aid High Yield Decks</option>
+                                    <option value="usmle_step2_uworld">💎 USMLE Step 2 CK - UWorld / Amboss High Yield</option>
+                                    <option value="inicet_marrow">🇮🇳 INI-CET / NExT High Yield Pearls (Marrow Preset)</option>
+                                    <option value="emree_uae">🇦🇪 UAE EMREE / DHA / MOH Residency Exam Decks</option>
+                                    <option value="ukmla_passmedicine">🇬🇧 UKMLA / PLAB PassMedicine Core Decks</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown-control-group">
+                                <label>Medical Specialty / Topic:</label>
+                                <select id="ankiTopicSelect" class="styled-select">
+                                    <option value="cardiovascular">Cardiology & Vascular Pathology</option>
+                                    <option value="pharmacology">Pharmacology (Mechanism of Action & Side Effects)</option>
+                                    <option value="microbiology">Microbiology & Infectious Diseases</option>
+                                    <option value="gastroenterology">Gastroenterology & Hepatology</option>
+                                    <option value="neurology">Neurology & Neuro-radiology</option>
+                                    <option value="endocrinology">Endocrinology & Metabolism</option>
+                                    <option value="high_yield_buzzwords">🔥 USMLE Mayo Clinic 100% Guaranteed Buzzwords</option>
+                                </select>
+                            </div>
+
+                            <button id="generateCardsBtn" class="btn-cyan-glow full-width">
+                                <i class="fa-solid fa-bolt"></i> AUTO-EXTRACT 20 HIGH-YIELD CARDS
+                            </button>
+
+                            <div class="auto-ingest-box">
+                                <div class="upload-dropzone" id="uploadDropzone">
+                                    <i class="fa-solid fa-file-pdf upload-icon"></i>
+                                    <strong>Drag & Drop PDF Notes / Textbooks</strong>
+                                    <span>or Select Chapter Preset Dropdown below</span>
+                                </div>
+                                <select id="presetTextbookSelect" class="styled-select mt-2">
+                                    <option value="">-- Load Preset Textbook Chapter --</option>
+                                    <option value="pathoma_ch3">Pathoma Ch 3: Neoplasia & Tumor Markers</option>
+                                    <option value="robbins_renal">Robbins Pathology: Glomerulonephritis Spectrum</option>
+                                    <option value="sketchy_bugs">Sketchy Micro: Gram Positive Cocci & Exotoxins</option>
+                                    <option value="costanzo_phys">Costanzo Physiology: Cardiac Action Potentials</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- FSRS Retention Stats -->
+                        <div class="fsrs-stats-card">
+                            <h4><i class="fa-solid fa-chart-line"></i> Automated FSRS Spaced Repetition</h4>
+                            <div class="stat-row">
+                                <span>Target Retention:</span>
+                                <strong>92% (Optimal)</strong>
+                            </div>
+                            <div class="stat-row">
+                                <span>Cards Mastered:</span>
+                                <strong id="cardsMasteredCount">1,420</strong>
+                            </div>
+                            <div class="stat-row">
+                                <span>Learning / Review:</span>
+                                <strong id="cardsReviewCount">48 Cards</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Main Flashcard Arena -->
+                    <div class="anki-arena glass-card">
+                        <div class="arena-header">
+                            <div class="deck-info">
+                                <span class="deck-badge" id="currentDeckBadge">USMLE Step 1 - Cardiology High Yield</span>
+                                <span class="card-counter" id="cardProgressText">Card 1 of 12</span>
+                            </div>
+                            <div class="arena-actions">
+                                <button id="autoPlayAudioBtn" class="btn-icon" title="Pronounce Medical Term"><i class="fa-solid fa-volume-high"></i></button>
+                                <button id="flagHighYieldBtn" class="btn-icon" title="Flag as High Yield"><i class="fa-solid fa-bookmark"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- 3D Flip Card Element -->
+                        <div class="flashcard-container" id="flashcardContainer">
+                            <div class="flashcard-inner" id="flashcardInner">
+                                <!-- Front Face -->
+                                <div class="flashcard-face flashcard-front">
+                                    <span class="face-tag">QUESTION / CLINICAL VIGNETTE</span>
+                                    <div class="card-text" id="cardFrontText">
+                                        A 54-year-old male with a history of long-standing hypertension presents with sudden tearing chest pain radiating to the back. CXR shows widened mediastinum. What is the most critical initial diagnostic step & first-line blood pressure control agent?
+                                    </div>
+                                    <div class="card-hint">
+                                        <i class="fa-solid fa-lightbulb"></i> Click card or press Spacebar to reveal answer
+                                    </div>
+                                </div>
+                                <!-- Back Face -->
+                                <div class="flashcard-face flashcard-back">
+                                    <span class="face-tag tag-answer">HIGH YIELD ANSWER & DIAGNOSIS</span>
+                                    <div class="card-text" id="cardBackText">
+                                        <strong>Diagnosis:</strong> Aortic Dissection (Type A or B)<br><br>
+                                        <strong>Initial Diagnostic Test:</strong> CT Angiography of the Chest (or TEE if renal failure).<br><br>
+                                        <strong>First-line Medical Treatment:</strong> IV Beta-blocker (e.g., Esmolol or Labetalol) to lower heart rate and aortic wall shear stress (target HR &lt; 60 bpm) before vasodilators.
+                                    </div>
+                                    <div class="high-yield-notes">
+                                        <i class="fa-solid fa-star icon-gold"></i> Mayo Clinic Board Tip: Always lower Heart Rate BEFORE SBP using Labetalol/Esmolol to prevent reflex tachycardia!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FSRS Rating Buttons (0% Typing, Just Clicks) -->
+                        <div class="fsrs-rating-bar" id="fsrsRatingBar">
+                            <button class="rating-btn btn-again" data-score="1">
+                                <span class="rating-label">Again</span>
+                                <span class="rating-time">&lt; 10m</span>
+                            </button>
+                            <button class="rating-btn btn-hard" data-score="2">
+                                <span class="rating-label">Hard</span>
+                                <span class="rating-time">1.2 Days</span>
+                            </button>
+                            <button class="rating-btn btn-good" data-score="3">
+                                <span class="rating-label">Good</span>
+                                <span class="rating-time">3.5 Days</span>
+                            </button>
+                            <button class="rating-btn btn-easy" data-score="4">
+                                <span class="rating-label">Easy</span>
+                                <span class="rating-time">7.0 Days</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: PRAYER & QURAN ROUTINE -->
+            <section id="tab-islamic" class="tab-pane">
+                <div class="pane-grid-2col">
+                    <!-- Left: Dynamic Prayer Times & Location Preset -->
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <h2><i class="fa-solid fa-kaaba icon-emerald"></i> Islamic Prayer Clock & Tracker</h2>
+                            <select id="prayerLocationSelect" class="styled-select-sm">
+                                <option value="dubai_uae" selected>🇦🇪 UAE (Dubai / Abu Dhabi / Sharjah)</option>
+                                <option value="kerala_india">🌴 India (Kerala - Kozhikode / Kochi / TVM)</option>
+                                <option value="mecca_saudi">🇸🇦 Saudi Arabia (Makkah / Madinah)</option>
+                                <option value="london_uk">🇬🇧 UK (London / Manchester)</option>
+                                <option value="chicago_usa">🇺🇸 USA (Chicago - Mayo Clinic / Rochester)</option>
+                            </select>
+                        </div>
+
+                        <div class="prayer-times-grid" id="prayerTimesGrid">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+
+                        <div class="islamic-quote-card">
+                            <i class="fa-solid fa-quote-left quote-icon"></i>
+                            <p>"Seek knowledge from the cradle to the grave. Verily, the angels lower their wings for the seeker of knowledge out of pleasure for what he does."</p>
+                            <span>— Prophet Muhammad (ﷺ)</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Morning 5 Ayahs Quran Routine Reader -->
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <h2><i class="fa-solid fa-book-quran icon-gold"></i> Morning Routine: 5 Daily Ayahs</h2>
+                            <div class="panel-actions">
+                                <select id="quranSurahSelect" class="styled-select-sm">
+                                    <option value="surah_yasin" selected>Surah Yasin (Ayahs 1-5)</option>
+                                    <option value="surah_kahf">Surah Al-Kahf (Ayahs 1-5)</option>
+                                    <option value="surah_mulk">Surah Al-Mulk (Ayahs 1-5)</option>
+                                    <option value="surah_rahman">Surah Ar-Rahman (Ayahs 1-5)</option>
+                                    <option value="surah_waqiah">Surah Al-Waqi'ah (Ayahs 1-5)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="quran-reader-card">
+                            <div class="quran-header-bar">
+                                <span class="quran-surah-title" id="quranSurahTitle">Surah Yasin (سورة يس)</span>
+                                <button id="quranAudioSimBtn" class="btn-secondary-sm"><i class="fa-solid fa-circle-play"></i> Recitation</button>
+                            </div>
+
+                            <div class="quran-verses-container" id="quranVersesContainer">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+
+                            <div class="quran-checkoff-footer">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="quranDoneCheckbox">
+                                    <span class="checkmark"></span>
+                                    <strong class="text-emerald">I completed studying my 5 Ayahs today!</strong>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: RESIDENCY MATCH ROADMAP -->
+            <section id="tab-residency" class="tab-pane">
+                <div class="residency-hub">
+                    <div class="residency-banner glass-card">
+                        <div class="banner-text">
+                            <h2><i class="fa-solid fa-hospital icon-purple"></i> Global Residency Matching Hub</h2>
+                            <p>Tailored match roadmap with high-precision dropdown milestone trackers for Mayo Clinic (USA), UK NHS, India INI-CET, and Gulf/UAE EMREE.</p>
+                        </div>
+                        <div class="banner-selector">
+                            <label>Select Target Pathway:</label>
+                            <select id="targetPathwaySelect" class="styled-select highlight-purple">
+                                <option value="usmle_mayo" selected>🇺🇸 USA Pathway: USMLE Step 1/2 CK -> Mayo Clinic Internal Med / Neuro</option>
+                                <option value="uk_nhs">🇬🇧 UK Pathway: UKMLA / PLAB -> NHS FY2 / Specialty Training</option>
+                                <option value="uae_emree">🇦🇪 UAE Pathway: EMREE -> DHA / Abu Dhabi DOH Residency</option>
+                                <option value="india_pg">🇮🇳 India Pathway: INI-CET / NExT -> AIIMS / JIPMER Tier-1 MD/MS</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="milestone-columns">
+                        <!-- Step 1: Examinations & High Scores -->
+                        <div class="milestone-card glass-card">
+                            <div class="card-top">
+                                <div class="step-badge">STAGE 1</div>
+                                <h3><i class="fa-solid fa-file-signature"></i> Core Board Exams</h3>
+                            </div>
+                            <div class="milestone-list" id="stage1List">
+                                <!-- JS Populated -->
+                            </div>
+                        </div>
+
+                        <!-- Step 2: USCE / Clinical Rotations & LoRs -->
+                        <div class="milestone-card glass-card">
+                            <div class="card-top">
+                                <div class="step-badge">STAGE 2</div>
+                                <h3><i class="fa-solid fa-user-doctor"></i> Clinical Electives & LoRs</h3>
+                            </div>
+                            <div class="milestone-list" id="stage2List">
+                                <!-- JS Populated -->
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Mayo Clinic & Ivy Research Papers -->
+                        <div class="milestone-card glass-card">
+                            <div class="card-top">
+                                <div class="step-badge">STAGE 3</div>
+                                <h3><i class="fa-solid fa-newspaper"></i> Research & PubMed Papers</h3>
+                            </div>
+                            <div class="milestone-list" id="stage3List">
+                                <!-- JS Populated -->
+                            </div>
+                        </div>
+
+                        <!-- Step 4: ERAS Application & Mayo Interview Prep -->
+                        <div class="milestone-card glass-card">
+                            <div class="card-top">
+                                <div class="step-badge">STAGE 4</div>
+                                <h3><i class="fa-solid fa-award"></i> ERAS Match & Mayo Interviews</h3>
+                            </div>
+                            <div class="milestone-list" id="stage4List">
+                                <!-- JS Populated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: KERALA / UAE DIETS & WORKOUTS -->
+            <section id="tab-lifestyle" class="tab-pane">
+                <div class="pane-grid-2col">
+                    <!-- Left: Brain-Power Meal Planner (Kerala & UAE Presets) -->
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <h2><i class="fa-solid fa-plate-wheat icon-emerald"></i> Med Student High-Brain Nutrition Planner</h2>
+                            <select id="dietPresetSelect" class="styled-select-sm">
+                                <option value="kerala_uae_fusion" selected>🌴 Kerala & UAE Fusion (High Protein & Brain Energy)</option>
+                                <option value="uae_mediterranean">🇦🇪 UAE Mediterranean (Dates, Olive Oil, Fish & Laban)</option>
+                                <option value="quick_hostel_dorm">🍳 Quick 10-Min Dorm & Hostel Meals</option>
+                            </select>
+                        </div>
+
+                        <div class="meal-plan-grid" id="mealPlanGrid">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Right: Quick Med-Student Micro Workout & Ergonomics -->
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <h2><i class="fa-solid fa-dumbbell icon-cyan"></i> 15-Minute Brain-Refresh Workout</h2>
+                            <select id="workoutPresetSelect" class="styled-select-sm">
+                                <option value="posture_cervical" selected>🧘 Med Student Posture & Cervical Spine Saver</option>
+                                <option value="hiit_dorm">🔥 15-Min No-Equipment High Intensity Cardio</option>
+                                <option value="meditation_stress">🧠 10-Min Cortisol Drop & Deep Breathing</option>
+                            </select>
+                        </div>
+
+                        <div class="workout-routine-card" id="workoutRoutineCard">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 6: RESEARCH & PUBMED TRACKER -->
+            <section id="tab-research" class="tab-pane">
+                <div class="dashboard-panel">
+                    <div class="panel-header">
+                        <h2><i class="fa-solid fa-flask-vial icon-purple"></i> Mayo Clinic Level Research & Publication Hub</h2>
+                        <div class="panel-actions">
+                            <select id="researchTypeSelect" class="styled-select-sm">
+                                <option value="case_report">Case Report / Series Template</option>
+                                <option value="systematic_review" selected>Meta-Analysis & Systematic Review</option>
+                                <option value="clinical_audit">Clinical Audit / QI Project</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="research-grid">
+                        <div class="research-tracker-card glass-card">
+                            <h3><i class="fa-solid fa-diagram-project"></i> Active PubMed Research Pipeline</h3>
+                            <div class="research-steps-pipeline" id="researchPipeline">
+                                <!-- JS Populated -->
+                            </div>
+                        </div>
+
+                        <div class="research-preset-generator glass-card">
+                            <h3><i class="fa-solid fa-list-check"></i> Mayo Clinic Matching Paper Checklist</h3>
+                            <div class="checklist-group" id="researchChecklist">
+                                <!-- JS Populated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Fullscreen Strict Lockdown Mode Overlay -->
+    <div id="strictLockdownOverlay" class="strict-lockdown-overlay hidden">
+        <div class="lockdown-content">
+            <div class="shield-pulse-icon">
+                <i class="fa-solid fa-shield-cat"></i>
+            </div>
+            <h2>STRICT FOCUS LOCKDOWN ACTIVE</h2>
+            <p>0% Distraction Tolerance Enabled. External Notifications Blocked.</p>
+
+            <div class="lockdown-timer" id="lockdownTimerDisplay">45:00</div>
+            <div class="lockdown-current-task">
+                <span>CURRENT TASK:</span>
+                <strong id="lockdownTaskName">USMLE Step 1 Cardiology AuraFlash Review</strong>
+            </div>
+
+            <div class="ambient-sound-controls">
+                <button class="sound-chip active" data-sound="rain"><i class="fa-solid fa-cloud-rain"></i> Mayo Clinic Study Rain</button>
+                <button class="sound-chip" data-sound="waves"><i class="fa-solid fa-water"></i> Arabian Gulf Waves</button>
+                <button class="sound-chip" data-sound="white_noise"><i class="fa-solid fa-headphones"></i> Alpha Wave White Noise</button>
+            </div>
+
+            <button id="exitLockdownBtn" class="btn-ghost-danger">
+                <i class="fa-solid fa-door-open"></i> Complete Session & Exit Lockdown
+            </button>
+        </div>
+    </div>
+
+    <!-- JS Application Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
